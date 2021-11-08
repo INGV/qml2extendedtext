@@ -46,7 +46,7 @@ The docker is used to parse a full QuakeML (xml) file or QuakeML webservice resp
 - gap: azimuthal gap of the contributing stations distribution
 - source: the source of the QuakeML information (it is either a file name or a webservice query depnding on the used option, see below)
 
-Note: the "hypocenter magnitude" is the magnitude directly associated to the specific hypocenter; it is calculated consequently to the hypocenter, it is tipically an ML and it might be not selected as the "preferred" if a hierarchically more reliable one is present (eg: Mw)
+**Note**: the "hypocenter magnitude" is the magnitude directly associated to the specific hypocenter; it is calculated consequently to the hypocenter, it is tipically an ML and it might be not selected as the "preferred" if a hierarchically more reliable one is present (eg: Mw)
 
 
 **Usage**
@@ -54,14 +54,18 @@ Note: the "hypocenter magnitude" is the magnitude directly associated to the spe
 usage: qml2extendedtext.py [-h] [--qmlin QMLIN] [--qmldir QMLDIR] [--eventid EVENTID] [--version VERSION] [--conf CONF] [--nophases] [--noamps] [--nofocals] [--agency AGENCY]
 
 optional arguments:
-  -h, --help         show this help message and exit
-  --qmlin QMLIN      Full path to qml event file
-  --qmldir QMLDIR    Full path to qml event file
-  --eventid EVENTID  INGV event id
-  --version VERSION  Agency coding origin version type (default: preferred) preferred,all, or an integer for known version numbers
-  --conf CONF        needed with --eventid agency webservices routes list type (default: ./ws_agency_route.conf)
-  --nophases         If on, no phase extraction and count is done
-  --noamps           If on, no phase extraction and count is done
-  --nofocals         If on, no focal mechanism extraction and count is done
-  --agency AGENCY    needed with --eventid agency to query for (see routes list in .conf file) type (default: ingv)
+-  -h, --help         show this help message and exit
+-  --qmlin QMLIN      Full path to a single qml event file
+-  --qmldir QMLDIR    Full path to the directory containing more qml event files
+-  --eventid EVENTID  INGV event id
+-  --version VERSION  Agency coding origin version type (**default**: preferred) preferred,all, or an integer for known version numbers
+-  --conf CONF        needed with --eventid agency webservices routes list type (**default**: ./ws_agency_route.conf)
+-  --nophases         If on, no phase extraction and count is done
+-  --noamps           If on, no amp extraction and count is done
+-  --nofocals         If on, no focal mechanism extraction and count is done
+-  --agency AGENCY    needed with --eventid agency to query for (see routes list in .conf file) type (default: ingv)
+
+**Note**: this script can be used either to parse QuakeML file(s) (--qmlin and --qmldir are alternative choices) or to get info from a webservice for a single event based on its unique identifier by the agency (--eventid)
+
+An header is given in output in all cases at line one of the screen output. In the case of --qmldir this is a the top of a list of hypocenters.
 
