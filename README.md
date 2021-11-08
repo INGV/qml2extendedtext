@@ -1,14 +1,14 @@
 [![TeamDigitale-publiccode](https://img.shields.io/badge/publiccode%20compliant-%E2%9C%94-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFxUExURQBmzABmzABmzABkywBkywBmzABmzABmzApszj2L2CyA1QBmzABmzABmzABlzABkywBlzABmzABkywBkywBkyyZ91OXv+qTH7AJlzABlzABmzABlzBJx0Hiu5EyU2wBmzECM2Wil4RRy0CZ91Orz+8/i9W2n4h950gBlzABkyzuJ2Pb6/bbT8AVpzZbA6vX5/TOE1iR80+jx+vn8/uXv+kKO2QBjywBlzA9vz3Cp4kmS2wBlzJbA6vX5/TOE1uvz+7LR8Ch+1AttzgBmzABmzABkywBkywBlzJbA6uz0+6PH7AFlzABmzABmzABlzJbA6jOE1iR70+z0+6TH7AFky5bA6jOF1hx30uPu+c/i9V+f3xl10QBlzABmzABlzIi459/s+TCD1gVpzZ7F7Pb6/evz+0CM2QBjywBmzBd00SV80whrzgBlzBFwzzqJ2DaG1wttzgBmzABmzABlzABlzABmzABmzABkywBkywBmzP///7f5b6EAAAABYktHRHo41YVqAAAAB3RJTUUH4wUWBTMYAFp7MgAAAF50RVh0UmF3IHByb2ZpbGUgdHlwZSBpcHRjAAppcHRjCiAgICAgIDI4CjM4NDI0OTRkMDQwNDAwMDAwMDAwMDAwZjFjMDI2ZTAwMDM1MjQ2NDcxYzAyMDAwMDAyMDAwNDAwCmCaPZ4AAAClSURBVAjXY2DAChiZmFlYwSw2EMHOwcnFzcPAwMvHLyAoJCwiKiYuISnFIC0jKyevoKikrKKqpq7BoKmlraOrp29gaGRsYmrGYG5haWVtY2tnaO/g6OTMwOvi6ubuAeR6enn7+IJMZfXztw0IDAoOkZaCcEP1w8IjIqOiY0Dc2Lj4hMSk5JTUtHSwOzIys7JzcvPyCwrB7ioqLiktMy+vqPRFczoAaG4fQ5lQVPsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTktMDUtMjJUMDU6NTE6MjQtMDQ6MDDV7wZaAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE5LTA1LTIyVDA1OjUxOjI0LTA0OjAwpLK+5gAAAABJRU5ErkJggg==)](https://github.com/italia/publiccode.yml)
-[![TeamDigitale-reuse](https://img.shields.io/badge/reuse%20software-%E2%9C%94-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFxUExURQBmzABmzABmzABkywBkywBmzABmzABmzApszj2L2CyA1QBmzABmzABmzABlzABkywBlzABmzABkywBkywBkyyZ91OXv+qTH7AJlzABlzABmzABlzBJx0Hiu5EyU2wBmzECM2Wil4RRy0CZ91Orz+8/i9W2n4h950gBlzABkyzuJ2Pb6/bbT8AVpzZbA6vX5/TOE1iR80+jx+vn8/uXv+kKO2QBjywBlzA9vz3Cp4kmS2wBlzJbA6vX5/TOE1uvz+7LR8Ch+1AttzgBmzABmzABkywBkywBlzJbA6uz0+6PH7AFlzABmzABmzABlzJbA6jOE1iR70+z0+6TH7AFky5bA6jOF1hx30uPu+c/i9V+f3xl10QBlzABmzABlzIi459/s+TCD1gVpzZ7F7Pb6/evz+0CM2QBjywBmzBd00SV80whrzgBlzBFwzzqJ2DaG1wttzgBmzABmzABlzABlzABmzABmzABkywBkywBmzP///7f5b6EAAAABYktHRHo41YVqAAAAB3RJTUUH4wUWBTMYAFp7MgAAAF50RVh0UmF3IHByb2ZpbGUgdHlwZSBpcHRjAAppcHRjCiAgICAgIDI4CjM4NDI0OTRkMDQwNDAwMDAwMDAwMDAwZjFjMDI2ZTAwMDM1MjQ2NDcxYzAyMDAwMDAyMDAwNDAwCmCaPZ4AAAClSURBVAjXY2DAChiZmFlYwSw2EMHOwcnFzcPAwMvHLyAoJCwiKiYuISnFIC0jKyevoKikrKKqpq7BoKmlraOrp29gaGRsYmrGYG5haWVtY2tnaO/g6OTMwOvi6ubuAeR6enn7+IJMZfXztw0IDAoOkZaCcEP1w8IjIqOiY0Dc2Lj4hMSk5JTUtHSwOzIys7JzcvPyCwrB7ioqLiktMy+vqPRFczoAaG4fQ5lQVPsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTktMDUtMjJUMDU6NTE6MjQtMDQ6MDDV7wZaAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE5LTA1LTIyVDA1OjUxOjI0LTA0OjAwpLK+5gAAAABJRU5ErkJggg==)](https://developers.italia.it/it/software/ingv-ingv-qml2hypo71phs)
+[![TeamDigitale-reuse](https://img.shields.io/badge/reuse%20software-%E2%9C%94-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFxUExURQBmzABmzABmzABkywBkywBmzABmzABmzApszj2L2CyA1QBmzABmzABmzABlzABkywBlzABmzABkywBkywBkyyZ91OXv+qTH7AJlzABlzABmzABlzBJx0Hiu5EyU2wBmzECM2Wil4RRy0CZ91Orz+8/i9W2n4h950gBlzABkyzuJ2Pb6/bbT8AVpzZbA6vX5/TOE1iR80+jx+vn8/uXv+kKO2QBjywBlzA9vz3Cp4kmS2wBlzJbA6vX5/TOE1uvz+7LR8Ch+1AttzgBmzABmzABkywBkywBlzJbA6uz0+6PH7AFlzABmzABmzABlzJbA6jOE1iR70+z0+6TH7AFky5bA6jOF1hx30uPu+c/i9V+f3xl10QBlzABmzABlzIi459/s+TCD1gVpzZ7F7Pb6/evz+0CM2QBjywBmzBd00SV80whrzgBlzBFwzzqJ2DaG1wttzgBmzABmzABlzABlzABmzABmzABkywBkywBmzP///7f5b6EAAAABYktHRHo41YVqAAAAB3RJTUUH4wUWBTMYAFp7MgAAAF50RVh0UmF3IHByb2ZpbGUgdHlwZSBpcHRjAAppcHRjCiAgICAgIDI4CjM4NDI0OTRkMDQwNDAwMDAwMDAwMDAwZjFjMDI2ZTAwMDM1MjQ2NDcxYzAyMDAwMDAyMDAwNDAwCmCaPZ4AAAClSURBVAjXY2DAChiZmFlYwSw2EMHOwcnFzcPAwMvHLyAoJCwiKiYuISnFIC0jKyevoKikrKKqpq7BoKmlraOrp29gaGRsYmrGYG5haWVtY2tnaO/g6OTMwOvi6ubuAeR6enn7+IJMZfXztw0IDAoOkZaCcEP1w8IjIqOiY0Dc2Lj4hMSk5JTUtHSwOzIys7JzcvPyCwrB7ioqLiktMy+vqPRFczoAaG4fQ5lQVPsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTktMDUtMjJUMDU6NTE6MjQtMDQ6MDDV7wZaAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE5LTA1LTIyVDA1OjUxOjI0LTA0OjAwpLK+5gAAAABJRU5ErkJggg==)](https://developers.italia.it/it/software/ingv-ingv-qml2extendedtext)
 
-[![License](https://img.shields.io/github/license/INGV/qml2hypo71phs.svg)](https://github.com/INGV/qml2hypo71phs/blob/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/INGV/qml2hypo71phs.svg)](https://github.com/INGV/qml2hypo71phs/issues)
+[![License](https://img.shields.io/github/license/INGV/qml2extendedtext.svg)](https://github.com/INGV/qml2extendedtext/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/INGV/qml2extendedtext.svg)](https://github.com/INGV/qml2extendedtext/issues)
 
-[![Docker build](https://img.shields.io/badge/docker%20build-from%20CI-yellow)](https://hub.docker.com/r/ingv/qml2hypo71phs)
-![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/ingv/qml2hypo71phs?sort=semver)
-![Docker Pulls](https://img.shields.io/docker/pulls/ingv/qml2hypo71phs)
+[![Docker build](https://img.shields.io/badge/docker%20build-from%20CI-yellow)](https://hub.docker.com/r/ingv/qml2extendedtext)
+![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/ingv/qml2extendedtext?sort=semver)
+![Docker Pulls](https://img.shields.io/docker/pulls/ingv/qml2extendedtext)
 
-# qml2extendedtext [![Version](https://img.shields.io/badge/dynamic/yaml?label=ver&query=softwareVersion&url=https://raw.githubusercontent.com/INGV/qml2hypo71phs/master/publiccode.yml)](https://github.com/INGV/qml2hypo71phs/blob/master/publiccode.yml) [![CircleCI](https://circleci.com/gh/INGV/qml2hypo71phs/tree/master.svg?style=svg)](https://circleci.com/gh/INGV/qml2hypo71phs/tree/master)
+# qml2extendedtext [![Version](https://img.shields.io/badge/dynamic/yaml?label=ver&query=softwareVersion&url=https://raw.githubusercontent.com/INGV/qml2extendedtext/master/publiccode.yml)](https://github.com/INGV/qml2extendedtext/blob/master/publiccode.yml) [![CircleCI](https://circleci.com/gh/INGV/qml2extendedtext/tree/master.svg?style=svg)](https://circleci.com/gh/INGV/qml2extendedtext/tree/master)
 
 The qml2extendedtext.py code is included into the present docker.
 
@@ -91,4 +91,67 @@ event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|er
 
 25883521|earthquake|85930721|100|2021-01-01T01:09:10.220000Z|13.1877|42.8343|8.4|0.26|0.7991095982233789|0.8006034718408229|1.5|0.93|1.5|10|10|6|4|91710461|ML|1.3|0.2|4|91710461|ML|1.3|0.2|4|0.17|212.0|20210101-010910__25883521__INGV-EVENT.qml
 
+## Quickstart
+### Docker image
+To obtain *qml2extendedtext* docker image, you have two options:
+
+#### 1) Get built image from DockerHub (*preferred*)
+Get the last built image from DockerHub repository:
+```
+$ docker pull ingv/qml2extendedtext
+```
+
+#### 2) Build by yourself
+First, clone the git repository
+```
+$ git clone https://github.com/INGV/qml2extendedtext.git
+$ cd qml2extendedtext
+$ docker build --tag ingv/qml2extendedtext .
+```
+
+in case of errors, try:
+```
+$ docker build --no-cache --pull --tag ingv/qml2extendedtext .
+```
+
+### Run docker
+To run the container, use the command below; the `-v` option is used to "mount" working directory into container:
+```
+$ docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext
+```
+
+example:
+```
+$ docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext --qmlin /opt/input/quakeml.xml
+```
+
+#### Docker CLI
+To override the `ENTRYPOINT` directive and enter into the Docker container, run:
+```
+$ docker run --rm -it --user $(id -u):$(id -g) --entrypoint=bash qml2extendedtext
+```
+
+## Update Docker image from DockerHub
+Get last Docker image from DockerHub repository:
+```
+$ docker pull ingv/qml2extendedtext
+```
+
+## Example
+![2021-qml2extendedtext](https://user-images.githubusercontent.com/16477095/115374480-2d946680-a1cd-11eb-90f3-6a894615eece.gif)
+
+## Contribute
+Thanks to your contributions!
+
+Here is a list of users who already contributed to this repository:
+<a href="https://github.com/ingv/qml2extendedtext/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ingv/qml2extendedtext" />
+</a>
+
+## Author
+(c) 2021 Raffaele Distefano raffaele.distefano[at]ingv.it
+
+(c) 2021 Valentino Lauciani valentino.lauciani[at]ingv.it
+
+Istituto Nazionale di Geofisica e Vulcanologia, Italia
 
