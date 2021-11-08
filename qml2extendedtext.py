@@ -658,6 +658,7 @@ if args.eventid:
        sys.exit(1)
    # Now requesting the qml file from the webservice
    qml_ans, url_to_description = getqml(eventid,ws_route['base_url'],ws_route['in_options'])
+   file_list =[qml_ans]
    if not qml_ans or len(qml_ans) == 0:
       print("Void answer with no error handling by the webservice")
       sys.exit(1)
@@ -666,12 +667,15 @@ if not args.qmlin and not args.eventid and not args.qmldir:
        print("Either --qmlin or --eventid or --qmldir are needed")
        sys.exit()
 
-header="event_id|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_nsta_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_nsta_used|rms|gap"
+header="event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_nsta_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_nsta_used|rms|gap|source"
 sys.stdout.write('%s\n' % header)
 for qml_ans in file_list:
     try:
         cat = read_events(qml_ans)
-        url_to_description = "File converted from qml file " + qml_ans.split(os.sep)[-1]
+        if args.eventid:
+           url_to_description = str(url_to_description)
+        else:
+           url_to_description = qml_ans.split(os.sep)[-1]
     except Exception as e:
         if sys.version_info[0] >= 3:
            print(e) 
@@ -688,9 +692,9 @@ for qml_ans in file_list:
     NoFocals=True if args.nofocals else False
     NoAmps=True if args.noamps else False
     eventid,full_origin,Pref_Mag_Id,Pref_Mag_Value,Pref_Mag_Type,Pref_Mag_Err,Pref_Mag_Nsta,Pref_Mag_Crea,Pref_Mag_Auth=tooriginmag(cat,ov,NoPhases,NoFocals,NoAmps,EARTH_RADIUS,event,hypocenter,magnitude,amplitude,phase)
-    
+
     for hypo in full_origin['data']['event']['hypocenters']:
         for magnitude in hypo['magnitudes']:
-            line='|'.join(map(str,[eventid,hypo['id'],hypo['version'],hypo['ot'],hypo['lon'],hypo['lat'],hypo['depth'],hypo['err_ot'],hypo['err_lon'],hypo['err_lat'],hypo['err_depth'],hypo['err_h'],hypo['err_z'],hypo['nph_tot'],hypo['nph'],hypo['nph_p'],hypo['nph_s'],magnitude['id'],magnitude['type_magnitude'],magnitude['mag'],magnitude['err'],magnitude['nsta_used'],str(Pref_Mag_Id),str(Pref_Mag_Type),str(Pref_Mag_Value),str(Pref_Mag_Err),str(Pref_Mag_Nsta),str(hypo['rms']),str(hypo['azim_gap'])]))
-            sys.stdout.write('%s\n' % line)
+            line='|'.join(map(str,[eventid,full_origin["data"]["event"]["type_event"],hypo['id'],hypo['version'],hypo['ot'],hypo['lon'],hypo['lat'],hypo['depth'],hypo['err_ot'],hypo['err_lon'],hypo['err_lat'],hypo['err_depth'],hypo['err_h'],hypo['err_z'],hypo['nph_tot'],hypo['nph'],hypo['nph_p'],hypo['nph_s'],magnitude['id'],magnitude['type_magnitude'],magnitude['mag'],magnitude['err'],magnitude['nsta_used'],str(Pref_Mag_Id),str(Pref_Mag_Type),str(Pref_Mag_Value),str(Pref_Mag_Err),str(Pref_Mag_Nsta),str(hypo['rms']),str(hypo['azim_gap'])]))
+            sys.stdout.write('%s|%s\n' % (line,url_to_description))
 sys.exit(0)
