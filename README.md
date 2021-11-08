@@ -13,3 +13,36 @@
 The qml2extendedtext.py code is included into the present docker.
 
 The docker is used to parse a full QuakeML (xml) file or QuakeML webservice response containing information on hypocenter and related arrival times picks, and write the following information about the hypocenter on one single line:
+
+- event_id
+- event_type
+- origin_id
+- version
+- ot
+- lon
+- lat
+- depth
+- err_ot
+- err_lon
+- err_lat
+- err_depth
+- err_h
+- err_z
+- nph_tot
+- nph_tot_used
+- nph_p_used
+- nph_s_used
+- magnitud_id
+- magnitude_type
+- magnitude_value
+- magnitude_err
+- magnitude_nsta_used
+- pref_magnitud_id
+- pref_magnitude_type
+- pref_magnitude_value
+- pref_magnitude_err
+- pref_magnitude_nsta_used
+- rms
+- gap
+- source
+
