@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 
 LABEL maintainer="Raffaele Di Stefano <raffaele.distefano@ingv.it>"
 ENV DEBIAN_FRONTEND=noninteractive 
@@ -18,11 +18,14 @@ RUN apt-get clean \
         vim
 
 # Adding python3 libraries
+RUN python3 --version
 RUN python3 -m pip install numpy
+RUN python3 -m pip install scipy
 RUN python3 -m pip install obspy
 
 # Copy files
 COPY qml2extendedtext.py /opt
+COPY ws_agency_route.conf /opt
 COPY entrypoint.sh /opt
 
 #
