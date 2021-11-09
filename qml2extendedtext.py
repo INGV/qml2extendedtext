@@ -623,7 +623,11 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
 args=parseArguments()
 
 # Getting this code name
-[self_user,self_host] = get_username()
+try:
+    [self_user,self_host] = get_username()
+except:
+    self_user='unknown'
+    self_host='docker'
 self_software=sys.argv[0]
 
 # If a qml input file is given, file_qml is the full or relative path_to_file
