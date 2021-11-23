@@ -45,7 +45,7 @@ description:
     genericName: qml2extendedtext
     shortDescription: >-
       Docker image to convert QuakeML format to NonLinLoc PHS format.
-    documentation: 'https://github.com/INGV/qml2extendedtext/blob/master/README.md'
+    documentation: 'https://github.com/INGV/qml2extendedtext/blob/main/README.md'
     longDescription: >
       This project is developed to create a Docker image with a simple converter from QuakeML to NonLinLoc PHS.
 
