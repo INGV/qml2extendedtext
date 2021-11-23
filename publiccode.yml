@@ -3,7 +3,7 @@
 # More info at https://github.com/italia/publiccode.yml
 
 publiccodeYmlVersion: '0.2'
-name: 'INGV - QuakeML to NonLinLoc PHS' 
+name: 'INGV - QuakeML to Extended Text Format' 
 releaseDate: '2021-11-23'
 url: 'https://github.com/INGV/qml2extendedtext'
 logo: images/ingv_logo_text_two_lines.png
@@ -44,15 +44,17 @@ description:
   en:
     genericName: qml2extendedtext
     shortDescription: >-
-      Docker image to convert QuakeML format to NonLinLoc PHS format.
+      Docker image to convert FDSN-event QuakeML format to FDNS-event Text extended format.
     documentation: 'https://github.com/INGV/qml2extendedtext/blob/main/README.md'
     longDescription: >
-      This project is developed to create a Docker image with a simple converter from QuakeML to NonLinLoc PHS.
+      This project is developed to create a Docker image with a simple converter from FDSN-event QuakeML format to FDNS-event Text extended format.
 
-      QuakeML is a flexible, extensible and modular XML representation of seismological data which is intended to cover a broad range of fields of application in modern seismology. More info about QuakeML: https://quake.ethz.ch/quakeml/
+      FDNS-event QuakeML format is a flexible, extensible and modular XML representation of seismological data which is intended to cover a broad range of fields of application in modern seismology. More info about QuakeML: https://quake.ethz.ch/quakeml/
+
+      FDNS-event Text format is contains one event per line with common fields separated by vertical bar characters (ASCII decimal 124). Field entries cannot contain vertical bar characters. Lines beginning with a hash character (“#”: ASCII decimal 35) should be considered comment lines.
  
-      The NonLinLoc (Non-Linear Location) package is a set of programs for velocity model construction, travel-time calculation and probabilistic, non-linear, global-search earthquake location in 3D structures, and for visualisation of 3D volume data and location results. Many of the programs operate with a 3D Grid structure which defines a specific, gridded, rectangular volume (Non-GLOBAL mode) or spherical section (GLOBAL mode). More info about NonLinLoc: http://alomax.free.fr/nlloc/
+      This application extends the FDSN-event Text format adding more seismological informations. 
 
     localisedName: 'QuakeML to NonLinLoc PHS'
     features:
-      - Converter from QuakeML to NonLinLoc PHS
+      - Converter from FDSN-event QuakeML to FDSN-event Text format
