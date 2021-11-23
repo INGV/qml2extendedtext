@@ -74,20 +74,20 @@ To obtain *qml2extendedtext* docker image, you have two options:
 #### 1) Get built image from DockerHub (*preferred*)
 Get the last built image from DockerHub repository:
 ```
-$ docker pull ingv/qml2extendedtext
+docker pull ingv/qml2extendedtext
 ```
 
 #### 2) Build by yourself
 First, clone the git repository
 ```
-$ git clone https://github.com/INGV/qml2extendedtext.git
-$ cd qml2extendedtext
-$ docker build --tag ingv/qml2extendedtext .
+git clone https://github.com/INGV/qml2extendedtext.git
+cd qml2extendedtext
+docker build --tag ingv/qml2extendedtext .
 ```
 
 in case of errors, try:
 ```
-$ docker build --no-cache --pull --tag ingv/qml2extendedtext .
+docker build --no-cache --pull --tag ingv/qml2extendedtext .
 ```
 
 
@@ -96,12 +96,12 @@ $ docker build --no-cache --pull --tag ingv/qml2extendedtext .
 ### Run docker
 To run the container, use the command below; the `-v` option is used to "mount" working directory into container:
 ```
-$ docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext
+docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext
 ```
 
 #### example with webservice (INGV)
 ```
-$ docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext python3 qml2extendedtext.py --eventid 25883521 --agency ingv --conf ./ws_agency_route.conf --version preferred
+docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext python3 qml2extendedtext.py --eventid 25883521 --agency ingv --conf ./ws_agency_route.conf --version preferred
 ```
 
 output:
@@ -113,7 +113,7 @@ event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|er
 
 #### example with qml input file (same event)
 ```
-$ docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext python3 qml2extendedtext.py --qmlin example/20210101-010910__25883521__INGV-EVENT.qml --version preferred
+docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext python3 qml2extendedtext.py --qmlin example/20210101-010910__25883521__INGV-EVENT.qml --version preferred
 ```
 
 output:
@@ -126,13 +126,13 @@ event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|er
 ### Docker CLI
 To override the `ENTRYPOINT` directive and enter into the Docker container, run:
 ```
-$ docker run --rm -it --user $(id -u):$(id -g) --entrypoint=bash qml2extendedtext
+docker run --rm -it --user $(id -u):$(id -g) --entrypoint=bash qml2extendedtext
 ```
 
 ## Update Docker image from DockerHub
 Get last Docker image from DockerHub repository:
 ```
-$ docker pull ingv/qml2extendedtext
+docker pull ingv/qml2extendedtext
 ```
 
 ## Contribute
