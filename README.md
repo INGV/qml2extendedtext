@@ -48,49 +48,6 @@ The docker is used to parse a full QuakeML (xml) file or QuakeML webservice resp
 
 **Note**: the "hypocenter magnitude" is the magnitude directly associated to the specific hypocenter; it is calculated consequently to the hypocenter, it is tipically an ML and it might be not selected as the "preferred" if a hierarchically more reliable one is present (eg: Mw)
 
-
-**Usage**
-
-usage: qml2extendedtext.py [-h] [--qmlin QMLIN] [--qmldir QMLDIR] [--eventid EVENTID] [--version VERSION] [--conf CONF] [--nophases] [--noamps] [--nofocals] [--agency AGENCY]
-
-optional arguments:
--  -h, --help         show this help message and exit
--  --qmlin QMLIN      Full path to a single qml event file
--  --qmldir QMLDIR    Full path to the directory containing more qml event files
--  --eventid EVENTID  INGV event id
--  --version VERSION  Agency coding origin version type (**default**: preferred) preferred,all, or an integer for known version numbers
--  --conf CONF        needed with --eventid agency webservices routes list type (**default**: ./ws_agency_route.conf)
--  --nophases         If on, no phase extraction and count is done
--  --noamps           If on, no amp extraction and count is done
--  --nofocals         If on, no focal mechanism extraction and count is done
--  --agency AGENCY    needed with --eventid agency to query for (see routes list in .conf file) type (default: ingv)
-
-**Note**: this script can be used either to parse QuakeML file(s) (--qmlin and --qmldir are alternative choices) or to get info from a webservice for a single event based on its unique identifier by the agency (--eventid)
-
-An header is given in output in all cases at line one of the screen output. In the case of --qmldir this is a the top of a list of hypocenters.
-
-**Examples**
-
-1) with webservice (INGV)
-
-Command line: python3 qml2extendedtext.py --eventid 25883521 --agency ingv --conf ./ws_agency_route.conf --version preferred
-
-Output:
-
-event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_nsta_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_nsta_used|rms|gap|source
-
-25883521|earthquake|85930721|100|2021-01-01T01:09:10.220000Z|13.1877|42.8343|8.4|0.26|0.7991095982233789|0.8006034718408229|1.5|0.93|1.5|10|10|6|4|91710461|ML|1.3|0.2|4|91710461|ML|1.3|0.2|4|0.17|212.0|http://webservices.ingv.it/fdsnws/event/1/query?eventid=25883521&includeallmagnitudes=true&includeallorigins=true&includeallstationsmagnitudes=true&includearrivals=true 
-
-2) with qml input file (same event)
-
-Command: python3 qml2extendedtext.py --qmlin example/20210101-010910__25883521__INGV-EVENT.qml --version preferred
-
-Output:
-
-event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_nsta_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_nsta_used|rms|gap|source
-
-25883521|earthquake|85930721|100|2021-01-01T01:09:10.220000Z|13.1877|42.8343|8.4|0.26|0.7991095982233789|0.8006034718408229|1.5|0.93|1.5|10|10|6|4|91710461|ML|1.3|0.2|4|91710461|ML|1.3|0.2|4|0.17|212.0|20210101-010910__25883521__INGV-EVENT.qml
-
 ## Quickstart
 ### Docker image
 To obtain *qml2extendedtext* docker image, you have two options:
@@ -114,27 +71,60 @@ in case of errors, try:
 $ docker build --no-cache --pull --tag ingv/qml2extendedtext .
 ```
 
+### Usage
+```
+usage: qml2extendedtext.py [-h] [--qmlin QMLIN] [--qmldir QMLDIR] [--eventid EVENTID] [--version VERSION] [--conf CONF] [--nophases] [--noamps] [--nofocals] [--agency AGENCY]
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --qmlin QMLIN      Full path to a single qml event file
+  --qmldir QMLDIR    Full path to the directory containing more qml event files
+  --eventid EVENTID  INGV event id
+  --version VERSION  Agency coding origin version type (**default**: preferred) preferred,all, or an integer for known version numbers
+  --conf CONF        needed with --eventid agency webservices routes list type (**default**: ./ws_agency_route.conf)
+  --nophases         If on, no phase extraction and count is done
+  --noamps           If on, no amp extraction and count is done
+  --nofocals         If on, no focal mechanism extraction and count is done
+  --agency AGENCY    needed with --eventid agency to query for (see routes list in .conf file) type (default: ingv)
+```
+**Note**: this script can be used either to parse QuakeML file(s) (--qmlin and --qmldir are alternative choices) or to get info from a webservice for a single event based on its unique identifier by the agency (--eventid)
+
+An header is given in output in all cases at line one of the screen output. In the case of --qmldir this is a the top of a list of hypocenters.
+
 ### Run docker
 To run the container, use the command below; the `-v` option is used to "mount" working directory into container:
 ```
 $ docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext
 ```
 
-example:
+#### example with webservice (INGV)
 ```
-$ docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext --qmlin /opt/input/quakeml.xml
+$ docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext python3 qml2extendedtext.py --eventid 25883521 --agency ingv --conf ./ws_agency_route.conf --version preferred
 ```
 
-#### Docker CLI
+output:
+```
+event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_nsta_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_nsta_used|rms|gap|source
+
+25883521|earthquake|85930721|100|2021-01-01T01:09:10.220000Z|13.1877|42.8343|8.4|0.26|0.7991095982233789|0.8006034718408229|1.5|0.93|1.5|10|10|6|4|91710461|ML|1.3|0.2|4|91710461|ML|1.3|0.2|4|0.17|212.0|http://webservices.ingv.it/fdsnws/event/1/query?eventid=25883521&includeallmagnitudes=true&includeallorigins=true&includeallstationsmagnitudes=true&includearrivals=true
+```
+
+#### example with qml input file (same event)
+```
+$ docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext python3 qml2extendedtext.py --qmlin example/20210101-010910__25883521__INGV-EVENT.qml --version preferred
+```
+
+output:
+```
+event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_nsta_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_nsta_used|rms|gap|source
+
+25883521|earthquake|85930721|100|2021-01-01T01:09:10.220000Z|13.1877|42.8343|8.4|0.26|0.7991095982233789|0.8006034718408229|1.5|0.93|1.5|10|10|6|4|91710461|ML|1.3|0.2|4|91710461|ML|1.3|0.2|4|0.17|212.0|20210101-010910__25883521__INGV-EVENT.qml
+```
+
+### Docker CLI
 To override the `ENTRYPOINT` directive and enter into the Docker container, run:
 ```
 $ docker run --rm -it --user $(id -u):$(id -g) --entrypoint=bash qml2extendedtext
-```
-
-## Update Docker image from DockerHub
-Get last Docker image from DockerHub repository:
-```
-$ docker pull ingv/qml2extendedtext
 ```
 
 ## Example
