@@ -10,10 +10,9 @@
 
 # qml2extendedtext [![Version](https://img.shields.io/badge/dynamic/yaml?label=ver&query=softwareVersion&url=https://raw.githubusercontent.com/INGV/qml2extendedtext/main/publiccode.yml)](https://github.com/INGV/qml2extendedtext/blob/main/publiccode.yml) [![CircleCI](https://circleci.com/gh/INGV/qml2extendedtext/tree/main.svg?style=svg)](https://circleci.com/gh/INGV/qml2extendedtext/tree/main)
 
-The qml2extendedtext.py code is included into the present docker.
+The `qml2extendedtext.py` code is included into the present docker.
 
 The docker is used to parse a full QuakeML (xml) file or QuakeML webservice response containing information on hypocenter and related arrival times picks, and write the following information about the hypocenter on one single line:
-
 - event_id: agency event unique identifier
 - event_type: type of event (eg: earthquake, quarry blast and other agency dependent definitions)
 - origin_id: agency hypocenter unique identifier; this correspond to the asked version of hypocenter that can be "preferred" or specific a-priori known location versions (see the tag below)
@@ -48,6 +47,26 @@ The docker is used to parse a full QuakeML (xml) file or QuakeML webservice resp
 
 **Note**: the "hypocenter magnitude" is the magnitude directly associated to the specific hypocenter; it is calculated consequently to the hypocenter, it is tipically an ML and it might be not selected as the "preferred" if a hierarchically more reliable one is present (eg: Mw)
 
+Anyway, only for information completeness here it is:
+```
+usage: qml2extendedtext.py [-h] [--qmlin QMLIN] [--qmldir QMLDIR] [--eventid EVENTID] [--version VERSION] [--conf CONF] [--nophases] [--noamps] [--nofocals] [--agency AGENCY]
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --qmlin QMLIN      Full path to a single qml event file
+  --qmldir QMLDIR    Full path to the directory containing more qml event files
+  --eventid EVENTID  INGV event id
+  --version VERSION  Agency coding origin version type (**default**: preferred) preferred,all, or an integer for known version numbers
+  --conf CONF        needed with --eventid agency webservices routes list type (**default**: ./ws_agency_route.conf)
+  --nophases         If on, no phase extraction and count is done
+  --noamps           If on, no amp extraction and count is done
+  --nofocals         If on, no focal mechanism extraction and count is done
+  --agency AGENCY    needed with --eventid agency to query for (see routes list in .conf file) type (default: ingv)
+```
+**Note**: this script can be used either to parse QuakeML file(s) (--qmlin and --qmldir are alternative choices) or to get info from a webservice for a single event based on its unique identifier by the agency (--eventid)
+
+An header is given in output in all cases at line one of the screen output. In the case of --qmldir this is a the top of a list of hypocenters.
+
 ## Quickstart
 ### Docker image
 To obtain *qml2extendedtext* docker image, you have two options:
@@ -71,25 +90,8 @@ in case of errors, try:
 $ docker build --no-cache --pull --tag ingv/qml2extendedtext .
 ```
 
-### Usage
-```
-usage: qml2extendedtext.py [-h] [--qmlin QMLIN] [--qmldir QMLDIR] [--eventid EVENTID] [--version VERSION] [--conf CONF] [--nophases] [--noamps] [--nofocals] [--agency AGENCY]
 
-optional arguments:
-  -h, --help         show this help message and exit
-  --qmlin QMLIN      Full path to a single qml event file
-  --qmldir QMLDIR    Full path to the directory containing more qml event files
-  --eventid EVENTID  INGV event id
-  --version VERSION  Agency coding origin version type (**default**: preferred) preferred,all, or an integer for known version numbers
-  --conf CONF        needed with --eventid agency webservices routes list type (**default**: ./ws_agency_route.conf)
-  --nophases         If on, no phase extraction and count is done
-  --noamps           If on, no amp extraction and count is done
-  --nofocals         If on, no focal mechanism extraction and count is done
-  --agency AGENCY    needed with --eventid agency to query for (see routes list in .conf file) type (default: ingv)
-```
-**Note**: this script can be used either to parse QuakeML file(s) (--qmlin and --qmldir are alternative choices) or to get info from a webservice for a single event based on its unique identifier by the agency (--eventid)
 
-An header is given in output in all cases at line one of the screen output. In the case of --qmldir this is a the top of a list of hypocenters.
 
 ### Run docker
 To run the container, use the command below; the `-v` option is used to "mount" working directory into container:
