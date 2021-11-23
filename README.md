@@ -129,9 +129,6 @@ To override the `ENTRYPOINT` directive and enter into the Docker container, run:
 $ docker run --rm -it --user $(id -u):$(id -g) --entrypoint=bash qml2extendedtext
 ```
 
-## Example
-![2021-qml2extendedtext](https://user-images.githubusercontent.com/16477095/115374480-2d946680-a1cd-11eb-90f3-6a894615eece.gif)
-
 ## Contribute
 Thanks to your contributions!
 
