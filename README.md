@@ -101,7 +101,7 @@ docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2e
 
 #### example with webservice (INGV)
 ```
-docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext python3 qml2extendedtext.py --eventid 25883521 --agency ingv --conf ./ws_agency_route.conf --version preferred
+docker run --rm --user $(id -u):$(id -g) -v $(pwd):/opt/input ingv/qml2extendedtext --eventid 25883521 --agency ingv --conf /opt/input/ws_agency_route.conf --version preferred
 ```
 
 output:
@@ -113,7 +113,7 @@ event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|er
 
 #### example with qml input file (same event)
 ```
-docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext python3 qml2extendedtext.py --qmlin example/20210101-010910__25883521__INGV-EVENT.qml --version preferred
+docker run --rm --user $(id -u):$(id -g) -v $(pwd):/opt/input ingv/qml2extendedtext --qmlin /opt/input/example/20210101-010910__25883521__INGV-EVENT.qml --version preferred
 ```
 
 output:
