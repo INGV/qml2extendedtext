@@ -65,7 +65,7 @@ optional arguments:
 ```
 **Note**: this script can be used either to parse QuakeML file(s) (--qmlin and --qmldir are alternative choices) or to get info from a webservice for a single event based on its unique identifier by the agency (--eventid)
 
-An header is given in output in all cases at line one of the screen output. In the case of --qmldir this is a the top of a list of hypocenters.
+An header,starting with a "#" is given in output in all cases at line one of the screen output. In the case of --qmldir this is a the top of a list of hypocenters.
 
 ## Quickstart
 ### Docker image
@@ -106,7 +106,7 @@ docker run --rm --user $(id -u):$(id -g) -v $(pwd):/opt/input ingv/qml2extendedt
 
 output:
 ```
-event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_nsta_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_nsta_used|rms|gap|source
+#event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_nsta_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_nsta_used|rms|gap|source
 
 25883521|earthquake|85930721|100|2021-01-01T01:09:10.220000Z|13.1877|42.8343|8.4|0.26|0.7991095982233789|0.8006034718408229|1.5|0.93|1.5|10|10|6|4|91710461|ML|1.3|0.2|4|91710461|ML|1.3|0.2|4|0.17|212.0|http://webservices.ingv.it/fdsnws/event/1/query?eventid=25883521&includeallmagnitudes=true&includeallorigins=true&includeallstationsmagnitudes=true&includearrivals=true
 ```
@@ -118,7 +118,7 @@ docker run --rm --user $(id -u):$(id -g) -v $(pwd):/opt/input ingv/qml2extendedt
 
 output:
 ```
-event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_nsta_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_nsta_used|rms|gap|source
+#event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_nsta_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_nsta_used|rms|gap|source
 
 25883521|earthquake|85930721|100|2021-01-01T01:09:10.220000Z|13.1877|42.8343|8.4|0.26|0.7991095982233789|0.8006034718408229|1.5|0.93|1.5|10|10|6|4|91710461|ML|1.3|0.2|4|91710461|ML|1.3|0.2|4|0.17|212.0|20210101-010910__25883521__INGV-EVENT.qml
 ```
