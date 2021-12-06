@@ -1,19 +1,18 @@
 [![TeamDigitale-publiccode](https://img.shields.io/badge/publiccode%20compliant-%E2%9C%94-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFxUExURQBmzABmzABmzABkywBkywBmzABmzABmzApszj2L2CyA1QBmzABmzABmzABlzABkywBlzABmzABkywBkywBkyyZ91OXv+qTH7AJlzABlzABmzABlzBJx0Hiu5EyU2wBmzECM2Wil4RRy0CZ91Orz+8/i9W2n4h950gBlzABkyzuJ2Pb6/bbT8AVpzZbA6vX5/TOE1iR80+jx+vn8/uXv+kKO2QBjywBlzA9vz3Cp4kmS2wBlzJbA6vX5/TOE1uvz+7LR8Ch+1AttzgBmzABmzABkywBkywBlzJbA6uz0+6PH7AFlzABmzABmzABlzJbA6jOE1iR70+z0+6TH7AFky5bA6jOF1hx30uPu+c/i9V+f3xl10QBlzABmzABlzIi459/s+TCD1gVpzZ7F7Pb6/evz+0CM2QBjywBmzBd00SV80whrzgBlzBFwzzqJ2DaG1wttzgBmzABmzABlzABlzABmzABmzABkywBkywBmzP///7f5b6EAAAABYktHRHo41YVqAAAAB3RJTUUH4wUWBTMYAFp7MgAAAF50RVh0UmF3IHByb2ZpbGUgdHlwZSBpcHRjAAppcHRjCiAgICAgIDI4CjM4NDI0OTRkMDQwNDAwMDAwMDAwMDAwZjFjMDI2ZTAwMDM1MjQ2NDcxYzAyMDAwMDAyMDAwNDAwCmCaPZ4AAAClSURBVAjXY2DAChiZmFlYwSw2EMHOwcnFzcPAwMvHLyAoJCwiKiYuISnFIC0jKyevoKikrKKqpq7BoKmlraOrp29gaGRsYmrGYG5haWVtY2tnaO/g6OTMwOvi6ubuAeR6enn7+IJMZfXztw0IDAoOkZaCcEP1w8IjIqOiY0Dc2Lj4hMSk5JTUtHSwOzIys7JzcvPyCwrB7ioqLiktMy+vqPRFczoAaG4fQ5lQVPsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTktMDUtMjJUMDU6NTE6MjQtMDQ6MDDV7wZaAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE5LTA1LTIyVDA1OjUxOjI0LTA0OjAwpLK+5gAAAABJRU5ErkJggg==)](https://github.com/italia/publiccode.yml)
 [![TeamDigitale-reuse](https://img.shields.io/badge/reuse%20software-%E2%9C%94-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFxUExURQBmzABmzABmzABkywBkywBmzABmzABmzApszj2L2CyA1QBmzABmzABmzABlzABkywBlzABmzABkywBkywBkyyZ91OXv+qTH7AJlzABlzABmzABlzBJx0Hiu5EyU2wBmzECM2Wil4RRy0CZ91Orz+8/i9W2n4h950gBlzABkyzuJ2Pb6/bbT8AVpzZbA6vX5/TOE1iR80+jx+vn8/uXv+kKO2QBjywBlzA9vz3Cp4kmS2wBlzJbA6vX5/TOE1uvz+7LR8Ch+1AttzgBmzABmzABkywBkywBlzJbA6uz0+6PH7AFlzABmzABmzABlzJbA6jOE1iR70+z0+6TH7AFky5bA6jOF1hx30uPu+c/i9V+f3xl10QBlzABmzABlzIi459/s+TCD1gVpzZ7F7Pb6/evz+0CM2QBjywBmzBd00SV80whrzgBlzBFwzzqJ2DaG1wttzgBmzABmzABlzABlzABmzABmzABkywBkywBmzP///7f5b6EAAAABYktHRHo41YVqAAAAB3RJTUUH4wUWBTMYAFp7MgAAAF50RVh0UmF3IHByb2ZpbGUgdHlwZSBpcHRjAAppcHRjCiAgICAgIDI4CjM4NDI0OTRkMDQwNDAwMDAwMDAwMDAwZjFjMDI2ZTAwMDM1MjQ2NDcxYzAyMDAwMDAyMDAwNDAwCmCaPZ4AAAClSURBVAjXY2DAChiZmFlYwSw2EMHOwcnFzcPAwMvHLyAoJCwiKiYuISnFIC0jKyevoKikrKKqpq7BoKmlraOrp29gaGRsYmrGYG5haWVtY2tnaO/g6OTMwOvi6ubuAeR6enn7+IJMZfXztw0IDAoOkZaCcEP1w8IjIqOiY0Dc2Lj4hMSk5JTUtHSwOzIys7JzcvPyCwrB7ioqLiktMy+vqPRFczoAaG4fQ5lQVPsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTktMDUtMjJUMDU6NTE6MjQtMDQ6MDDV7wZaAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE5LTA1LTIyVDA1OjUxOjI0LTA0OjAwpLK+5gAAAABJRU5ErkJggg==)](https://developers.italia.it/it/software/ingv-ingv-qml2extendedtext)
 
-[![License](https://img.shields.io/github/license/INGV/qml2extendedtext.svg)](https://github.com/INGV/qml2extendedtext/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/INGV/qml2extendedtext.svg)](https://github.com/INGV/qml2extendedtext/blob/main/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/INGV/qml2extendedtext.svg)](https://github.com/INGV/qml2extendedtext/issues)
 
 [![Docker build](https://img.shields.io/badge/docker%20build-from%20CI-yellow)](https://hub.docker.com/r/ingv/qml2extendedtext)
 ![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/ingv/qml2extendedtext?sort=semver)
 ![Docker Pulls](https://img.shields.io/docker/pulls/ingv/qml2extendedtext)
 
-# qml2extendedtext [![Version](https://img.shields.io/badge/dynamic/yaml?label=ver&query=softwareVersion&url=https://raw.githubusercontent.com/INGV/qml2extendedtext/master/publiccode.yml)](https://github.com/INGV/qml2extendedtext/blob/master/publiccode.yml) [![CircleCI](https://circleci.com/gh/INGV/qml2extendedtext/tree/master.svg?style=svg)](https://circleci.com/gh/INGV/qml2extendedtext/tree/master)
+# qml2extendedtext [![Version](https://img.shields.io/badge/dynamic/yaml?label=ver&query=softwareVersion&url=https://raw.githubusercontent.com/INGV/qml2extendedtext/main/publiccode.yml)](https://github.com/INGV/qml2extendedtext/blob/main/publiccode.yml) [![CircleCI](https://circleci.com/gh/INGV/qml2extendedtext/tree/main.svg?style=svg)](https://circleci.com/gh/INGV/qml2extendedtext/tree/main)
 
-The qml2extendedtext.py code is included into the present docker.
+The `qml2extendedtext.py` code is included into the present docker.
 
 The docker is used to parse a full QuakeML (xml) file or QuakeML webservice response containing information on hypocenter and related arrival times picks, and write the following information about the hypocenter on one single line:
-
 - event_id: agency event unique identifier
 - event_type: type of event (eg: earthquake, quarry blast and other agency dependent definitions)
 - origin_id: agency hypocenter unique identifier; this correspond to the asked version of hypocenter that can be "preferred" or specific a-priori known location versions (see the tag below)
@@ -48,48 +47,25 @@ The docker is used to parse a full QuakeML (xml) file or QuakeML webservice resp
 
 **Note**: the "hypocenter magnitude" is the magnitude directly associated to the specific hypocenter; it is calculated consequently to the hypocenter, it is tipically an ML and it might be not selected as the "preferred" if a hierarchically more reliable one is present (eg: Mw)
 
-
-**Usage**
-
+Anyway, only for information completeness here it is:
+```
 usage: qml2extendedtext.py [-h] [--qmlin QMLIN] [--qmldir QMLDIR] [--eventid EVENTID] [--version VERSION] [--conf CONF] [--nophases] [--noamps] [--nofocals] [--agency AGENCY]
 
 optional arguments:
--  -h, --help         show this help message and exit
--  --qmlin QMLIN      Full path to a single qml event file
--  --qmldir QMLDIR    Full path to the directory containing more qml event files
--  --eventid EVENTID  INGV event id
--  --version VERSION  Agency coding origin version type (**default**: preferred) preferred,all, or an integer for known version numbers
--  --conf CONF        needed with --eventid agency webservices routes list type (**default**: ./ws_agency_route.conf)
--  --nophases         If on, no phase extraction and count is done
--  --noamps           If on, no amp extraction and count is done
--  --nofocals         If on, no focal mechanism extraction and count is done
--  --agency AGENCY    needed with --eventid agency to query for (see routes list in .conf file) type (default: ingv)
-
+  -h, --help         show this help message and exit
+  --qmlin QMLIN      Full path to a single qml event file
+  --qmldir QMLDIR    Full path to the directory containing more qml event files
+  --eventid EVENTID  INGV event id
+  --version VERSION  Agency coding origin version type (**default**: preferred) preferred,all, or an integer for known version numbers
+  --conf CONF        needed with --eventid agency webservices routes list type (**default**: ./ws_agency_route.conf)
+  --nophases         If on, no phase extraction and count is done
+  --noamps           If on, no amp extraction and count is done
+  --nofocals         If on, no focal mechanism extraction and count is done
+  --agency AGENCY    needed with --eventid agency to query for (see routes list in .conf file) type (default: ingv)
+```
 **Note**: this script can be used either to parse QuakeML file(s) (--qmlin and --qmldir are alternative choices) or to get info from a webservice for a single event based on its unique identifier by the agency (--eventid)
 
 An header is given in output in all cases at line one of the screen output. In the case of --qmldir this is a the top of a list of hypocenters.
-
-**Examples**
-
-1) with webservice (INGV)
-
-Command line: python3 qml2extendedtext.py --eventid 25883521 --agency ingv --conf ./ws_agency_route.conf --version preferred
-
-Output:
-
-event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_nsta_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_nsta_used|rms|gap|source
-
-25883521|earthquake|85930721|100|2021-01-01T01:09:10.220000Z|13.1877|42.8343|8.4|0.26|0.7991095982233789|0.8006034718408229|1.5|0.93|1.5|10|10|6|4|91710461|ML|1.3|0.2|4|91710461|ML|1.3|0.2|4|0.17|212.0|http://webservices.ingv.it/fdsnws/event/1/query?eventid=25883521&includeallmagnitudes=true&includeallorigins=true&includeallstationsmagnitudes=true&includearrivals=true 
-
-2) with qml input file (same event)
-
-Command: python3 qml2extendedtext.py --qmlin example/20210101-010910__25883521__INGV-EVENT.qml --version preferred
-
-Output:
-
-event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_nsta_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_nsta_used|rms|gap|source
-
-25883521|earthquake|85930721|100|2021-01-01T01:09:10.220000Z|13.1877|42.8343|8.4|0.26|0.7991095982233789|0.8006034718408229|1.5|0.93|1.5|10|10|6|4|91710461|ML|1.3|0.2|4|91710461|ML|1.3|0.2|4|0.17|212.0|20210101-010910__25883521__INGV-EVENT.qml
 
 ## Quickstart
 ### Docker image
@@ -98,47 +74,66 @@ To obtain *qml2extendedtext* docker image, you have two options:
 #### 1) Get built image from DockerHub (*preferred*)
 Get the last built image from DockerHub repository:
 ```
-$ docker pull ingv/qml2extendedtext
+docker pull ingv/qml2extendedtext
 ```
 
 #### 2) Build by yourself
 First, clone the git repository
 ```
-$ git clone https://github.com/INGV/qml2extendedtext.git
-$ cd qml2extendedtext
-$ docker build --tag ingv/qml2extendedtext .
+git clone https://github.com/INGV/qml2extendedtext.git
+cd qml2extendedtext
+docker build --tag ingv/qml2extendedtext .
 ```
 
 in case of errors, try:
 ```
-$ docker build --no-cache --pull --tag ingv/qml2extendedtext .
+docker build --no-cache --pull --tag ingv/qml2extendedtext .
 ```
+
+
+
 
 ### Run docker
 To run the container, use the command below; the `-v` option is used to "mount" working directory into container:
 ```
-$ docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext
+docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext
 ```
 
-example:
+#### example with webservice (INGV)
 ```
-$ docker run --rm --user $(id -u):$(id -g) -v $(pwd)/example:/opt/input ingv/qml2extendedtext --qmlin /opt/input/quakeml.xml
+docker run --rm --user $(id -u):$(id -g) -v $(pwd):/opt/input ingv/qml2extendedtext --eventid 25883521 --agency ingv --conf /opt/input/ws_agency_route.conf --version preferred
 ```
 
-#### Docker CLI
+output:
+```
+event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_nsta_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_nsta_used|rms|gap|source
+
+25883521|earthquake|85930721|100|2021-01-01T01:09:10.220000Z|13.1877|42.8343|8.4|0.26|0.7991095982233789|0.8006034718408229|1.5|0.93|1.5|10|10|6|4|91710461|ML|1.3|0.2|4|91710461|ML|1.3|0.2|4|0.17|212.0|http://webservices.ingv.it/fdsnws/event/1/query?eventid=25883521&includeallmagnitudes=true&includeallorigins=true&includeallstationsmagnitudes=true&includearrivals=true
+```
+
+#### example with qml input file (same event)
+```
+docker run --rm --user $(id -u):$(id -g) -v $(pwd):/opt/input ingv/qml2extendedtext --qmlin /opt/input/example/20210101-010910__25883521__INGV-EVENT.qml --version preferred
+```
+
+output:
+```
+event_id|event_type|origin_id|version|ot|lon|lat|depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_nsta_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_nsta_used|rms|gap|source
+
+25883521|earthquake|85930721|100|2021-01-01T01:09:10.220000Z|13.1877|42.8343|8.4|0.26|0.7991095982233789|0.8006034718408229|1.5|0.93|1.5|10|10|6|4|91710461|ML|1.3|0.2|4|91710461|ML|1.3|0.2|4|0.17|212.0|20210101-010910__25883521__INGV-EVENT.qml
+```
+
+### Docker CLI
 To override the `ENTRYPOINT` directive and enter into the Docker container, run:
 ```
-$ docker run --rm -it --user $(id -u):$(id -g) --entrypoint=bash qml2extendedtext
+docker run --rm -it --user $(id -u):$(id -g) --entrypoint=bash qml2extendedtext
 ```
 
 ## Update Docker image from DockerHub
 Get last Docker image from DockerHub repository:
 ```
-$ docker pull ingv/qml2extendedtext
+docker pull ingv/qml2extendedtext
 ```
-
-## Example
-![2021-qml2extendedtext](https://user-images.githubusercontent.com/16477095/115374480-2d946680-a1cd-11eb-90f3-6a894615eece.gif)
 
 ## Contribute
 Thanks to your contributions!
