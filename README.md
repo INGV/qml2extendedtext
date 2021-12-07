@@ -8,7 +8,7 @@
 ![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/ingv/qml2extendedtext?sort=semver)
 ![Docker Pulls](https://img.shields.io/docker/pulls/ingv/qml2extendedtext)
 
-# qml2extendedtext [![Version](https://img.shields.io/badge/dynamic/yaml?label=ver&query=softwareVersion&url=https://raw.githubusercontent.com/INGV/qml2extendedtext/main/publiccode.yml)](https://github.com/INGV/qml2extendedtext/blob/main/publiccode.yml) [![CircleCI](https://circleci.com/gh/INGV/qml2extendedtext/tree/main.svg?style=svg)](https://circleci.com/gh/INGV/qml2extendedtext/tree/main)
+# qml2extendedtext [![Version](https://img.shields.io/badge/dynamic/yaml?label=ver&query=softwareVersion&url=https://raw.githubusercontent.com/INGV/qml2extendedtext/main/publiccode.yml)](https://github.com/INGV/qml2extendedtext/blob/main/publiccode.yml) [![CircleCI](https://circleci.com/gh/INGV/qml2extendedtext/tree/main.svg?style=svg)](https://circleci.com/gh/INGV/qml2extendedtext/tree/main) | [![GitHub](https://img.shields.io/static/v1?label=GitHub&message=Link%20to%20repository&color=blueviolet)](https://github.com/INGV/qml2extendedtext/)
 
 The `qml2extendedtext.py` code is included into the present docker.
 
