@@ -266,6 +266,24 @@ def getqml(event_id,bu,op):
         sys.exit(1)
     return res.read(),urltext
 
+def onset_qml2hypo(qpo):
+    if qpo == "impulsive":
+       o = 'i'
+    elif qpo == "emergent":
+       o = 'e'
+    elif qpo == "questionable":
+       o = ''
+    return o
+
+def polarity_qml2hypo(qpp):
+    if qpp == "positive":
+       p='U'
+    elif qpp == "negative":
+       p='D'
+    elif qpp == "undecidable":
+       p=''
+    return p
+
 #################### END OF QML PARSER COMMON PART ###########################
 ###### FROM HERE ADD ON PURPOSE OUTPUT FORMATTERS ############################
 
