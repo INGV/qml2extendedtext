@@ -290,6 +290,10 @@ def polarity_qml2hypo(qpp):
 
 #### INSERT HERE ------------>  
 def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnitude,jsamplitude,jsphase):
+    # The converstion from degrees to km uses the same value used in the select from DB (SEISEV) that creates the QML
+    # define('DEGREE_TO_KM', '111.1949'); // 1 Degree = 111.1949 Km
+    # This conversion will need to be updated when the QML will be created by the new caravel system
+    DEGREE_TO_KM=111.1949
     for ev in c:
         eo = copy.deepcopy(jsevent)
         evdict=dict(ev)
@@ -309,6 +313,8 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
         #print(eo)
         version_found=False
         for origin in evdict['origins']:
+            #for k, v in origin.items():
+            #    print(k)
             oo = copy.deepcopy(jshypocenter)
             or_id=str(origin['resource_id']).split('=')[-1]
             # Se esiste una versione dentro le creation info allora si legge il valore altrimetni e' falso.
@@ -318,6 +324,8 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
                 or_info_version = False
             # Se la versione chiesta e' la preferita vince il primo check che e' fatto sull'origin id e non sul numero di versione
             if str(orig_ver_id) == or_id or or_info_version == str(orig_ver) or str(orig_ver) == 'all' or str(orig_ver) == 'All' or str(orig_ver) == 'ALL':
+               mindist_km=1000000.0
+               maxdist_km=0.0
                version_found=True
                oo["id"] = str(or_id)
                oo["version"] = str(or_info_version)
@@ -384,11 +392,11 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
                except:
                    pass
                try:
-                   oo['min_distance'] = origin['quality']['minimum_distance']
+                   oo['min_distance'] = origin['quality']['minimum_distance']*DEGREE_TO_KM
                except:
                    pass
                try:
-                   oo['max_distance'] = origin['quality']['maximum_distance']
+                   oo['max_distance'] = origin['quality']['maximum_distance']*DEGREE_TO_KM
                except:
                    pass
                try:
@@ -486,9 +494,11 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
                                  pass
                              #print("SI ",arrival['phase'],pick['time'],pick['waveform_id']['station_code'])
                              try:
-                                 po['ep_distance']   = float(arrival['distance'])*111.1949 # questo calcolo e' approssimato e non rapportato alla latitudone
+                                 po['ep_distance']   = float(arrival['distance'])*DEGREE_TO_KM
+                                 mindist_km = po['ep_distance'] if po['ep_distance'] < mindist_km else mindist_km
+                                 maxdist_km = po['ep_distance'] if po['ep_distance'] > maxdist_km else maxdist_km
                              except:
-                                 po['ep_distance']   = arrival['distance']
+                                 pass
                              try:
                                  po['azimut']        = arrival['azimuth']
                              except:
@@ -642,7 +652,13 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
                       #print(fo_or_id)
                       #print(fo_id)
                       #print(focal['moment_tensor'])
+               if mindist_km == 10000. or maxdist_km == 0.0:
+                   pass
+               else:
+                   oo['min_distance'] = mindist_km
+                   oo['max_distance'] = maxdist_km
                eo["data"]["event"]["hypocenters"].append(oo) # push oggetto oo in hypocenters
+
         if not version_found:
            print("Chosen version doesnt match any origin id")
            sys.exit(202) # Il codice 202 e' stato scelto per identificare il caso in cui tutto sia corretto ma non ci sia alcuna versione come quella scelta
@@ -702,7 +718,7 @@ if not args.qmlin and not args.eventid and not args.qmldir:
        print("Either --qmlin or --eventid or --qmldir are needed")
        sys.exit()
 
-header="#event_id|event_type|origin_id|version|ot|lon|lat|depth|fixed_depth|origin_Q|rms|gap|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_Q|magnitude_err|magnitude_ncha_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_Q|pref_magnitude_err|pref_magnitude_ncha_used|source"
+header="#event_id|event_type|origin_id|version|ot|lon|lat|depth|fixed_depth|origin_Q|rms|gap|min_dist_km|max_dist_km|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_Q|magnitude_err|magnitude_ncha_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_Q|pref_magnitude_err|pref_magnitude_ncha_used|source"
 sys.stdout.write('%s\n' % header)
 for qml_ans in file_list:
     try:
@@ -729,7 +745,8 @@ for qml_ans in file_list:
     eventid,full_origin,Pref_Mag_Id,Pref_Mag_Value,Pref_Mag_Type,Pref_Mag_Err,Pref_Mag_Nsta,Pref_Mag_Crea,Pref_Mag_Auth,Pref_Mag_Q=tooriginmag(cat,ov,NoPhases,NoFocals,NoAmps,EARTH_RADIUS,event,hypocenter,magnitude,amplitude,phase)
 
     for hypo in full_origin['data']['event']['hypocenters']:
+        print(hypo['min_distance'],hypo['max_distance'])
         for magnitude in hypo['magnitudes']:
-            line='|'.join(map(str,[eventid,full_origin["data"]["event"]["type_event"],hypo['id'],hypo['version'],str(hypo['ot'])[:22],hypo['lon'],hypo['lat'],hypo['depth'],hypo['fix_depth'],hypo["loc_quality"],str(hypo['rms']),str(hypo['azim_gap']),hypo['err_ot'],'{0:.{1}f}'.format(hypo['err_lon'],4),'{0:.{1}f}'.format(hypo['err_lat'],4),hypo['err_depth'],hypo['err_h'],hypo['err_z'],hypo['nph_tot'],hypo['nph'],hypo['nph_p'],hypo['nph_s'],magnitude['id'],magnitude['type_magnitude'],magnitude['mag'],magnitude['mag_quality'],magnitude['err'],magnitude['nsta_used'],str(Pref_Mag_Id),str(Pref_Mag_Type),str(Pref_Mag_Value),Pref_Mag_Q,str(Pref_Mag_Err),str(Pref_Mag_Nsta),]))
+            line='|'.join(map(str,[eventid,full_origin["data"]["event"]["type_event"],hypo['id'],hypo['version'],str(hypo['ot'])[:22],hypo['lon'],hypo['lat'],hypo['depth'],hypo['fix_depth'],hypo["loc_quality"],str(hypo['rms']),str(hypo['azim_gap']),'{0:.{1}f}'.format(hypo['min_distance'],2),'{0:.{1}f}'.format(hypo['max_distance'],2),hypo['err_ot'],'{0:.{1}f}'.format(hypo['err_lon'],4),'{0:.{1}f}'.format(hypo['err_lat'],4),hypo['err_depth'],hypo['err_h'],hypo['err_z'],hypo['nph_tot'],hypo['nph'],hypo['nph_p'],hypo['nph_s'],magnitude['id'],magnitude['type_magnitude'],magnitude['mag'],magnitude['mag_quality'],magnitude['err'],magnitude['nsta_used'],str(Pref_Mag_Id),str(Pref_Mag_Type),str(Pref_Mag_Value),Pref_Mag_Q,str(Pref_Mag_Err),str(Pref_Mag_Nsta),]))
             sys.stdout.write('%s|%s\n' % (line,url_to_description))
 sys.exit(0)
