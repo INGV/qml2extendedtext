@@ -147,6 +147,7 @@ def json_data_structure():
             "nph_tot": null,
             "nph_fm": null,
             "quality": null,
+            "loc_quality": null,
             "type_hypocenter": "",
             "model": null,
             "loc_program": null,
@@ -163,8 +164,8 @@ def json_data_structure():
               "mag": null,
               "type_magnitude": null,
               "err": null,
-              "mag_quality": null, #?
-              "quality": null, #?
+              "mag_quality": null,
+              "quality": null,
               "nsta_used": null,
               # From StationsMag or Amplitude
               "cha_used_autocount": null,
@@ -320,6 +321,10 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
                version_found=True
                oo["id"] = str(or_id)
                oo["version"] = str(or_info_version)
+               try:
+                   oo["loc_quality"] = origin['creation_info']['extra']['quality']['value']
+               except:
+                   pass
                try:
                    oo["type_hypocenter"] = str(origin['origin_type'])
                except:
@@ -546,10 +551,10 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
                       Pref_Mag_Nsta  = mag['station_count']
                       Pref_Mag_Crea  = mag['creation_info']['agency_id']
                       Pref_Mag_Auth  = mag['creation_info']['author']
+                      Pref_Mag_Q     = mag['creation_info']['extra']['mag_quality']['value']
                    if m_or_id == or_id:
                       #for k, v in mag.items():
                       #    print(k, v)
-                      #pass
                       mm['id'] = mag_id
                       mm['mag'] = mag['mag']
                       mm['type_magnitude'] = mag['magnitude_type']
@@ -557,6 +562,10 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
                       mm['nsta_used'] = mag['station_count']
                       mm['provenance_name'] = mag['creation_info']['agency_id']
                       mm['provenance_instance'] = mag['creation_info']['author']
+                      try:
+                          mm["mag_quality"] = mag['creation_info']['extra']['mag_quality']['value']
+                      except:
+                          pass
                       #print(mm['mag'],mm['type_magnitude'])
                       if not no_amp:
                          am = copy.deepcopy(jsamplitude)
@@ -637,7 +646,7 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
         if not version_found:
            print("Chosen version doesnt match any origin id")
            sys.exit(202) # Il codice 202 e' stato scelto per identificare il caso in cui tutto sia corretto ma non ci sia alcuna versione come quella scelta
-    return eid,eo,Pref_Mag_Id,Pref_Mag_Value,Pref_Mag_Type,Pref_Mag_Err,Pref_Mag_Nsta,Pref_Mag_Crea,Pref_Mag_Auth
+    return eid,eo,Pref_Mag_Id,Pref_Mag_Value,Pref_Mag_Type,Pref_Mag_Err,Pref_Mag_Nsta,Pref_Mag_Crea,Pref_Mag_Auth,Pref_Mag_Q
     
 
 ##############################################################################
@@ -693,7 +702,7 @@ if not args.qmlin and not args.eventid and not args.qmldir:
        print("Either --qmlin or --eventid or --qmldir are needed")
        sys.exit()
 
-header="#event_id|event_type|origin_id|version|ot|lon|lat|depth|fixed_depth|rms|gap|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_ncha_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_ncha_used|source"
+header="#event_id|event_type|origin_id|version|ot|lon|lat|depth|fixed_depth|origin_Q|rms|gap|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_Q|magnitude_err|magnitude_ncha_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_Q|pref_magnitude_err|pref_magnitude_ncha_used|source"
 sys.stdout.write('%s\n' % header)
 for qml_ans in file_list:
     try:
@@ -717,10 +726,10 @@ for qml_ans in file_list:
     NoPhases=True if args.nophases else False
     NoFocals=True if args.nofocals else False
     NoAmps=True if args.noamps else False
-    eventid,full_origin,Pref_Mag_Id,Pref_Mag_Value,Pref_Mag_Type,Pref_Mag_Err,Pref_Mag_Nsta,Pref_Mag_Crea,Pref_Mag_Auth=tooriginmag(cat,ov,NoPhases,NoFocals,NoAmps,EARTH_RADIUS,event,hypocenter,magnitude,amplitude,phase)
+    eventid,full_origin,Pref_Mag_Id,Pref_Mag_Value,Pref_Mag_Type,Pref_Mag_Err,Pref_Mag_Nsta,Pref_Mag_Crea,Pref_Mag_Auth,Pref_Mag_Q=tooriginmag(cat,ov,NoPhases,NoFocals,NoAmps,EARTH_RADIUS,event,hypocenter,magnitude,amplitude,phase)
 
     for hypo in full_origin['data']['event']['hypocenters']:
         for magnitude in hypo['magnitudes']:
-            line='|'.join(map(str,[eventid,full_origin["data"]["event"]["type_event"],hypo['id'],hypo['version'],str(hypo['ot'])[:22],hypo['lon'],hypo['lat'],hypo['depth'],hypo['fix_depth'],str(hypo['rms']),str(hypo['azim_gap']),hypo['err_ot'],'{0:.{1}f}'.format(hypo['err_lon'],4),'{0:.{1}f}'.format(hypo['err_lat'],4),hypo['err_depth'],hypo['err_h'],hypo['err_z'],hypo['nph_tot'],hypo['nph'],hypo['nph_p'],hypo['nph_s'],magnitude['id'],magnitude['type_magnitude'],magnitude['mag'],magnitude['err'],magnitude['nsta_used'],str(Pref_Mag_Id),str(Pref_Mag_Type),str(Pref_Mag_Value),str(Pref_Mag_Err),str(Pref_Mag_Nsta),]))
+            line='|'.join(map(str,[eventid,full_origin["data"]["event"]["type_event"],hypo['id'],hypo['version'],str(hypo['ot'])[:22],hypo['lon'],hypo['lat'],hypo['depth'],hypo['fix_depth'],hypo["loc_quality"],str(hypo['rms']),str(hypo['azim_gap']),hypo['err_ot'],'{0:.{1}f}'.format(hypo['err_lon'],4),'{0:.{1}f}'.format(hypo['err_lat'],4),hypo['err_depth'],hypo['err_h'],hypo['err_z'],hypo['nph_tot'],hypo['nph'],hypo['nph_p'],hypo['nph_s'],magnitude['id'],magnitude['type_magnitude'],magnitude['mag'],magnitude['mag_quality'],magnitude['err'],magnitude['nsta_used'],str(Pref_Mag_Id),str(Pref_Mag_Type),str(Pref_Mag_Value),Pref_Mag_Q,str(Pref_Mag_Err),str(Pref_Mag_Nsta),]))
             sys.stdout.write('%s|%s\n' % (line,url_to_description))
 sys.exit(0)
