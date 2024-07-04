@@ -693,7 +693,7 @@ if not args.qmlin and not args.eventid and not args.qmldir:
        print("Either --qmlin or --eventid or --qmldir are needed")
        sys.exit()
 
-header="#event_id|event_type|origin_id|version|ot|lon|lat|depth|fixed_depth|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_ncha_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_ncha_used|rms|gap|source"
+header="#event_id|event_type|origin_id|version|ot|lon|lat|depth|fixed_depth|rms|gap|err_ot|err_lon|err_lat|err_depth|err_h|err_z|nph_tot|nph_tot_used|nph_p_used|nph_s_used|magnitud_id|magnitude_type|magnitude_value|magnitude_err|magnitude_ncha_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_err|pref_magnitude_ncha_used|source"
 sys.stdout.write('%s\n' % header)
 for qml_ans in file_list:
     try:
@@ -721,6 +721,6 @@ for qml_ans in file_list:
 
     for hypo in full_origin['data']['event']['hypocenters']:
         for magnitude in hypo['magnitudes']:
-            line='|'.join(map(str,[eventid,full_origin["data"]["event"]["type_event"],hypo['id'],hypo['version'],str(hypo['ot'])[:22],hypo['lon'],hypo['lat'],hypo['depth'],hypo['fix_depth'],hypo['err_ot'],'{0:.{1}f}'.format(hypo['err_lon'],4),'{0:.{1}f}'.format(hypo['err_lat'],4),hypo['err_depth'],hypo['err_h'],hypo['err_z'],hypo['nph_tot'],hypo['nph'],hypo['nph_p'],hypo['nph_s'],magnitude['id'],magnitude['type_magnitude'],magnitude['mag'],magnitude['err'],magnitude['nsta_used'],str(Pref_Mag_Id),str(Pref_Mag_Type),str(Pref_Mag_Value),str(Pref_Mag_Err),str(Pref_Mag_Nsta),str(hypo['rms']),str(hypo['azim_gap'])]))
+            line='|'.join(map(str,[eventid,full_origin["data"]["event"]["type_event"],hypo['id'],hypo['version'],str(hypo['ot'])[:22],hypo['lon'],hypo['lat'],hypo['depth'],hypo['fix_depth'],str(hypo['rms']),str(hypo['azim_gap']),hypo['err_ot'],'{0:.{1}f}'.format(hypo['err_lon'],4),'{0:.{1}f}'.format(hypo['err_lat'],4),hypo['err_depth'],hypo['err_h'],hypo['err_z'],hypo['nph_tot'],hypo['nph'],hypo['nph_p'],hypo['nph_s'],magnitude['id'],magnitude['type_magnitude'],magnitude['mag'],magnitude['err'],magnitude['nsta_used'],str(Pref_Mag_Id),str(Pref_Mag_Type),str(Pref_Mag_Value),str(Pref_Mag_Err),str(Pref_Mag_Nsta),]))
             sys.stdout.write('%s|%s\n' % (line,url_to_description))
 sys.exit(0)
