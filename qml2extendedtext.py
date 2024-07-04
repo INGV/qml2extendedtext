@@ -721,6 +721,6 @@ for qml_ans in file_list:
 
     for hypo in full_origin['data']['event']['hypocenters']:
         for magnitude in hypo['magnitudes']:
-            line='|'.join(map(str,[eventid,full_origin["data"]["event"]["type_event"],hypo['id'],hypo['version'],hypo['ot'],hypo['lon'],hypo['lat'],hypo['depth'],hypo['fix_depth'],hypo['err_ot'],hypo['err_lon'],hypo['err_lat'],hypo['err_depth'],hypo['err_h'],hypo['err_z'],hypo['nph_tot'],hypo['nph'],hypo['nph_p'],hypo['nph_s'],magnitude['id'],magnitude['type_magnitude'],magnitude['mag'],magnitude['err'],magnitude['nsta_used'],str(Pref_Mag_Id),str(Pref_Mag_Type),str(Pref_Mag_Value),str(Pref_Mag_Err),str(Pref_Mag_Nsta),str(hypo['rms']),str(hypo['azim_gap'])]))
+            line='|'.join(map(str,[eventid,full_origin["data"]["event"]["type_event"],hypo['id'],hypo['version'],str(hypo['ot'])[:22],hypo['lon'],hypo['lat'],hypo['depth'],hypo['fix_depth'],hypo['err_ot'],hypo['err_lon'],hypo['err_lat'],hypo['err_depth'],hypo['err_h'],hypo['err_z'],hypo['nph_tot'],hypo['nph'],hypo['nph_p'],hypo['nph_s'],magnitude['id'],magnitude['type_magnitude'],magnitude['mag'],magnitude['err'],magnitude['nsta_used'],str(Pref_Mag_Id),str(Pref_Mag_Type),str(Pref_Mag_Value),str(Pref_Mag_Err),str(Pref_Mag_Nsta),str(hypo['rms']),str(hypo['azim_gap'])]))
             sys.stdout.write('%s|%s\n' % (line,url_to_description))
 sys.exit(0)
