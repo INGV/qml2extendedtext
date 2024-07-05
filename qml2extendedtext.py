@@ -70,9 +70,7 @@ def parseArguments():
 
 try:
     import ConfigParser as cp
-    #sys.stderr.write("ConfigParser loaded\n")
 except ImportError:
-    #sys.stderr.write("configparser loaded\n")
     import configparser as cp
 
 # Build a dictionary from config file section
@@ -89,6 +87,12 @@ def get_config_dictionary(cfg, section):
             dict1[option] = None
     return dict1
 
+def format_round(v,n):
+    try:
+        z = '{0:.{1}f}'.format(v,n)
+    except:
+        z = False
+    return z
 
 # JSON ENCODER CLASS
 class DataEncoder(json.JSONEncoder):
@@ -718,7 +722,7 @@ if not args.qmlin and not args.eventid and not args.qmldir:
        print("Either --qmlin or --eventid or --qmldir are needed")
        sys.exit()
 
-header="#event_id|event_type|origin_id|version|ot|lon|lat|depth|fixed_depth|origin_Q|rms|gap|nph_tot|nph_tot_used|nph_p_used|nph_s_used|min_dist_km|max_dist_km|err_ot|err_lon|err_lat|err_depth|err_h|err_z|confidence_level|magnitud_id|magnitude_type|magnitude_value|magnitude_Q|magnitude_err|magnitude_ncha_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_Q|pref_magnitude_err|pref_magnitude_ncha_used|source"
+header="#event_id|event_type|origin_id|version|ot|lon|lat|depth|fixed_depth|origin_Q|rms|gap|nph_tot|nph_tot_used|nph_p_used|nph_s_used|min_dist_km|max_dist_km|err_ot|err_lon_km|err_lat_km|err_depth_km|err_h_km|err_z_km|confidence_level|magnitud_id|magnitude_type|magnitude_value|magnitude_Q|magnitude_err|magnitude_ncha_used|pref_magnitud_id|pref_magnitude_type|pref_magnitude_value|pref_magnitude_Q|pref_magnitude_err|pref_magnitude_ncha_used|source"
 sys.stdout.write('%s\n' % header)
 for qml_ans in file_list:
     try:
@@ -746,6 +750,21 @@ for qml_ans in file_list:
 
     for hypo in full_origin['data']['event']['hypocenters']:
         for magnitude in hypo['magnitudes']:
-            line='|'.join(map(str,[eventid,full_origin["data"]["event"]["type_event"],hypo['id'],hypo['version'],str(hypo['ot'])[:22],hypo['lon'],hypo['lat'],hypo['depth'],hypo['fix_depth'],hypo["loc_quality"],str(hypo['rms']),str(hypo['azim_gap']),hypo['nph_tot'],hypo['nph'],hypo['nph_p'],hypo['nph_s'],'{0:.{1}f}'.format(hypo['min_distance'],2),'{0:.{1}f}'.format(hypo['max_distance'],2),hypo['err_ot'],'{0:.{1}f}'.format(hypo['err_lon'],4),'{0:.{1}f}'.format(hypo['err_lat'],4),hypo['err_depth'],hypo['err_h'],hypo['err_z'],hypo['confidence_lev'],magnitude['id'],magnitude['type_magnitude'],magnitude['mag'],magnitude['mag_quality'],magnitude['err'],magnitude['nsta_used'],str(Pref_Mag_Id),str(Pref_Mag_Type),str(Pref_Mag_Value),Pref_Mag_Q,str(Pref_Mag_Err),str(Pref_Mag_Nsta),]))
+            # formatting some of the fields
+            origin_time=str(hypo['ot'])[:22]
+            mindis   = format_round(hypo['min_distance'],2)
+            maxdis   = format_round(hypo['max_distance'],2)
+            errot    = format_round(hypo['err_ot'],2)
+            errlonkm = format_round(hypo['err_lon'],2)
+            errlatkm = format_round(hypo['err_lat'],2)
+            errdepkm = format_round(hypo['err_depth'],2)
+            errhkm   = format_round(hypo['err_h'],2)
+            errzkm   = format_round(hypo['err_z'],2)
+            # Preferred Magnitude migth have "None" so it is converted to False
+            Pref_Mag_Q = False if Pref_Mag_Q is None else Pref_Mag_Q
+            Pref_Mag_Err = False if Pref_Mag_Err is None else Pref_Mag_Err
+            Pref_Mag_Nsta = False if Pref_Mag_Nsta is None else Pref_Mag_Nsta
+
+            line='|'.join(map(str,[eventid,full_origin["data"]["event"]["type_event"],hypo['id'],hypo['version'],origin_time,hypo['lon'],hypo['lat'],hypo['depth'],hypo['fix_depth'],hypo["loc_quality"],hypo['rms'],hypo['azim_gap'],hypo['nph_tot'],hypo['nph'],hypo['nph_p'],hypo['nph_s'],mindis,maxdis,errot,errlonkm,errlatkm,errdepkm,errhkm,errzkm,hypo['confidence_lev'],magnitude['id'],magnitude['type_magnitude'],magnitude['mag'],magnitude['mag_quality'],magnitude['err'],magnitude['nsta_used'],Pref_Mag_Id,Pref_Mag_Type,Pref_Mag_Value,Pref_Mag_Q,Pref_Mag_Err,Pref_Mag_Nsta,]))
             sys.stdout.write('%s|%s\n' % (line,url_to_description))
 sys.exit(0)
