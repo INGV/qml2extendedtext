@@ -656,7 +656,7 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
                       #print(fo_or_id)
                       #print(fo_id)
                       #print(focal['moment_tensor'])
-               if mindist_km == 10000. or maxdist_km == 0.0:
+               if mindist_km == 1000000.0 or maxdist_km == 0.0:
                    pass
                else:
                    oo['min_distance'] = mindist_km
