@@ -530,10 +530,10 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
                                        S_count_use += 1
                              except:
                                  pass
-                             if po['arr_time_is_used'] == 0:
-                                 print("NO!",pick['phase_hint'],pick['time'],pick['waveform_id']['station_code'],po['ep_distance'],po['weight_phase_localization'],arrival['time_residual'])
-                             else:
-                                 print("SI!",arrival['phase'],pick['time'],pick['waveform_id']['station_code'],po['ep_distance'],po['weight_phase_localization'],arrival['time_residual'])
+                             #if po['arr_time_is_used'] == 0:
+                             #    print("NO!",pick['phase_hint'],pick['time'],pick['waveform_id']['station_code'],po['ep_distance'],po['weight_phase_localization'],arrival['time_residual'])
+                             #else:
+                             #    print("SI!",arrival['phase'],pick['time'],pick['waveform_id']['station_code'],po['ep_distance'],po['weight_phase_localization'],arrival['time_residual'])
                       oo["phases"].append(po)
                if not no_phs:
                   #print("Counting Phases")
