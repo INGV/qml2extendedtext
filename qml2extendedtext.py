@@ -426,11 +426,11 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
                S_count_use=0
                Pol_count=0
                if not no_phs:
-                  po = copy.deepcopy(jsphase)
                   #print("Managing phases")
                   arrivals=list(origin['arrivals'])
                   #print(origin['arrivals'])
                   for pick in evdict['picks']:
+                      po = copy.deepcopy(jsphase)
                       #for k, v in pick.items():
                       #    print(k)
                       po['arr_time_is_used']=0
@@ -488,15 +488,12 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
                           a_pick_id=str(arrival['pick_id']).split('=')[-1]
                           #print(a_pick_id,pick_id)
                           if a_pick_id == pick_id:
-                             try:
+                             if arrival['time_residual']:
                                  po['arr_time_is_used']=1
-                             except:
-                                 pass
                              try:
                                  po['isc_code']      = arrival['phase']
                              except:
                                  pass
-                             #print("SI ",arrival['phase'],pick['time'],pick['waveform_id']['station_code'])
                              try:
                                  po['ep_distance']   = float(arrival['distance'])*DEGREE_TO_KM
                                  mindist_km = po['ep_distance'] if po['ep_distance'] < mindist_km else mindist_km
@@ -520,24 +517,23 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
                              except:
                                  pass
                              try:
-                                 #print(arrival['phase'][0])
                                  if arrival['phase'][0] == 'P' or arrival['phase'][0] == 'p':
-                                    #print(P_count_all)
                                     P_count_all += 1 
-                                    if arrival['time_weight'] > 0:
+                                    if po['arr_time_is_used'] == 1 and arrival['time_weight'] > 0:
                                        P_count_use += 1
                              except:
                                  pass
                              try:
                                  if arrival['phase'][0] == 'S' or arrival['phase'][0] == 's':
                                     S_count_all += 1 
-                                    if arrival['time_weight'] > 0:
+                                    if po['arr_time_is_used'] == 1 and arrival['time_weight'] > 0:
                                        S_count_use += 1
                              except:
                                  pass
-                      if po['arr_time_is_used'] == 0:
-                          #print("NO ",pick['phase_hint'],pick['time'],pick['waveform_id']['station_code'])
-                          pass
+                             if po['arr_time_is_used'] == 0:
+                                 print("NO!",pick['phase_hint'],pick['time'],pick['waveform_id']['station_code'],po['ep_distance'],po['weight_phase_localization'],arrival['time_residual'])
+                             else:
+                                 print("SI!",arrival['phase'],pick['time'],pick['waveform_id']['station_code'],po['ep_distance'],po['weight_phase_localization'],arrival['time_residual'])
                       oo["phases"].append(po)
                if not no_phs:
                   #print("Counting Phases")
