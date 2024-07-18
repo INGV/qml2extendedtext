@@ -555,13 +555,41 @@ def tooriginmag(c,orig_ver,no_phs,no_foc,no_amp,ER,jsevent,jshypocenter,jsmagnit
                    mag_channel_used=0
                    if mag_id == pref_ma_id:
                       Pref_Mag_Id    = mag_id
-                      Pref_Mag_Value = mag['mag']
-                      Pref_Mag_Type  = mag['magnitude_type']
-                      Pref_Mag_Err   = mag['mag_errors']['uncertainty']
-                      Pref_Mag_Nsta  = mag['station_count']
-                      Pref_Mag_Crea  = mag['creation_info']['agency_id']
-                      Pref_Mag_Auth  = mag['creation_info']['author']
-                      Pref_Mag_Q     = mag['creation_info']['extra']['mag_quality']['value']
+                      try:
+                         Pref_Mag_Value = mag['mag']
+                      except:
+                         Pref_Mag_Value = "null"
+                         pass
+                      try:
+                         Pref_Mag_Type  = mag['magnitude_type']
+                      except:
+                         Pref_Mag_Type = "null"
+                         pass
+                      try:
+                         Pref_Mag_Err   = mag['mag_errors']['uncertainty']
+                      except:
+                         Pref_Mag_Err = "null"
+                         pass
+                      try:
+                         Pref_Mag_Nsta  = mag['station_count']
+                      except:
+                         Pref_Mag_Nsta = "null"
+                         pass
+                      try:
+                         Pref_Mag_Crea  = mag['creation_info']['agency_id']
+                      except:
+                         Pref_Mag_Crea = "null"
+                         pass
+                      try:
+                         Pref_Mag_Auth  = mag['creation_info']['author']
+                      except:
+                         Pref_Mag_Auth = "null"
+                         pass
+                      try:
+                         Pref_Mag_Q     = mag['creation_info']['extra']['mag_quality']['value']
+                      except:
+                         Pref_Mag_Q = "null"
+                         pass
                    if m_or_id == or_id:
                       #for k, v in mag.items():
                       #    print(k, v)
