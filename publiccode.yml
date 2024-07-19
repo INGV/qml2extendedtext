@@ -4,11 +4,11 @@
 
 publiccodeYmlVersion: '0.2'
 name: 'INGV - QuakeML to Extended Text Format' 
-releaseDate: '2024-07-16'
+releaseDate: '2024-07-19'
 url: 'https://github.com/INGV/qml2extendedtext'
 logo: images/ingv_logo_text_two_lines.png
 landingURL: 'https://github.com/INGV/qml2extendedtext'
-softwareVersion: v1.18.0
+softwareVersion: v1.19.0
 developmentStatus: stable
 softwareType: standalone/other
 platforms:
