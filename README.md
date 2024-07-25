@@ -14,44 +14,45 @@ The `qml2extendedtext.py` code is included into the present docker.
 
 The docker is used to parse a full QuakeML (xml) file or QuakeML webservice response containing information on hypocenter and related arrival times picks, and write the following information about the hypocenter on one single line:
 
-- event_id: agency event unique identifier
-- event_type: type of event (eg: earthquake, quarry blast and other agency dependent definitions)
-- origin_id: agency hypocenter unique identifier; this correspond to the asked version of hypocenter that can be "preferred" or specific a-priori known location versions (see the tag below)
-- version: this is a specific tag describing the type of solution (eg for INGV: 0,1,2 are automatic solutions (1 is not always present), 100,200,1000 are revised solutions and 1000 is the Bulletin one)
-- ot: specific solution origintime in standard format YYYY-mm-ddTHH:MM:SS.x
-- lon: hypocenter geographic longitude expressed in decimal degrees positive east from Greenwich
-- lat: hypocenter geographic latitude expressed in decimal degrees positive northward
-- depth: hypocenter depth expressed in km positive downward from the sea level
-- fixed_depth: 0 for not, 1 for yes
-- origin_Q: hypocenter location quality; 2 characters (A,B,C,D) for INGV origin versions 0, 1, 2, 100, 1000 based on estimated errors (position 1) and goodness-of-fit (position 2) 
-- rms: Root Mean Square of the location residuals of the specific hypocenter expressed in seconds
-- gap: azimuthal gap of the contributing stations distribution
-- nph_tot: total number of P+S arrivals (picks associated to the specific hypocenter)
-- nph_tot_used: total number of P+S arrivals contributing to the specific hypocenter
-- nph_p_used: number of P arrivals contributing to the specific hypocenter
-- nph_s_used: number of S arrivals contributing to the specific hypocenter
-- min_dist_km: distance of the closest used station (km)
-- max_dist_km: distance of the farest used stations (km)
-- err_ot: uncertainty on ot expressed in seconds
-- err_lon_km: uncertainty on lon expressed in +/- km
-- err_lat_km: uncertainty on lat expressed in +/- km
-- err_depth: uncertainty on depth expressed in km
-- err_h: horizontal error expressed in +/-km (not necessarily available)
-- err_z: vertical error (like err_depth)
-- confidence level: errors ellipsoid confidence level 
-- magnitud_id: agency unique identifier of the "hypocenter magnitude" (see below the note for the definition) magnitude associated to the specific hypocenter (this might be different from the preferred and from magnitudes associated to other hypocenters of the same event)
-- magnitude_type: type of "hypocenter magnitude"
-- magnitude_value: value of the "hypocenter magnitude"
-- magnitude_Q: magnitude quality. For INGV origin version 0, 1, 2 (Earthworm automatic versions) 1 character (A,B,C,D) based on number of available values;  for INGV origin versions 100, 1000: 2 characters (A,B,C,D) based on number of available values and weighted standard deviation.
-- magnitude_err: uncertainty of the "hypocenter magnitude"
-- magnitude_nsta_used: number of stations contributing to the "hypocenter magnitude"
-- pref_magnitud_id: agency unique identifier of the "event magnitude" which is the preferred type and value of magnitude for the event, not necessarily associated to the specific hypocenter (eg: if a Mw is available it is preferred to the hypocenter related ML)
-- pref_magnitude_type: type of the preferred magnitude
-- pref_magnitude_value: value of the preferred magnitude
-- pref_magnitude_Q: magnitude quality. For INGV origin version 0, 1, 2 (Earthworm automatic versions) 1 character (A,B,C,D) based on number of available values;  for INGV origin versions 100, 1000: 2 characters (A,B,C,D) based on number of available values and weighted standard deviation
-- pref_magnitude_err: uncertainty associated to the preferred magnitude (not always present)
-- pref_magnitude_nsta_used: number of stations contributing to the preferred magnitude (non always present)
-- source: the source of the QuakeML information (it is either a file name or a web service query depending on the used option, see below)
+- **event_id**: agency event unique identifier
+- **event_type**: type of event (eg: earthquake, quarry blast and other agency dependent definitions)
+- **origin_id**: agency hypocenter unique identifier; this correspond to the asked version of hypocenter that can be "preferred" or specific a-priori known location versions (see the tag below)
+- **version**: this is a specific tag describing the type of solution (eg for INGV: 0,1,2 are automatic solutions (1 is not always present), 100,200,1000 are revised solutions and 1000 is the Bulletin one)
+- **ot**: specific solution origintime in standard format YYYY-mm-ddTHH:MM:SS.x
+- **lon**: hypocenter geographic longitude expressed in decimal degrees positive east from Greenwich
+- **lat**: hypocenter geographic latitude expressed in decimal degrees positive northward
+- **depth**: hypocenter depth expressed in km positive downward from the sea level
+- **fixed_depth**: 0 for not, 1 for yes
+- **origin_Q**: hypocenter location quality; 2 characters (A,B,C,D) for INGV origin versions 0, 1, 2, 100, 1000 based on estimated errors (position 1) and goodness-of-fit (position 2) 
+- **rms**: Root Mean Square of the location residuals of the specific hypocenter expressed in seconds
+- **gap**: azimuthal gap of the contributing stations distribution
+- **nph_tot**: total number of P+S arrivals (picks associated to the specific hypocenter)
+- **nph_tot_used**: total number of P+S arrivals contributing to the specific hypocenter
+- **nph_p_used**: number of P arrivals contributing to the specific hypocenter
+- **nph_s_used**: number of S arrivals contributing to the specific hypocenter
+- **min_dist_km**: distance of the closest used station (km)
+- **max_dist_km**: distance of the farest used stations (km)
+- **err_ot**: uncertainty on ot expressed in seconds
+- **err_lon_km**: uncertainty on lon expressed in +/- km
+- **err_lat_km**: uncertainty on lat expressed in +/- km
+- **err_depth**: uncertainty on depth expressed in km
+- **err_h: horizontal error expressed in +/-km (not necessarily available)
+- **err_z: vertical error (like err_depth)
+- **confidence level**: errors ellipsoid confidence level 
+- **magnitud_id**: agency unique identifier of the "hypocenter magnitude" (see below the note for the definition) magnitude associated to the specific hypocenter (this might be different from the preferred and from magnitudes associated to other hypocenters of the same event)
+- **magnitude_type**: type of "hypocenter magnitude"
+- **magnitude_value**: value of the "hypocenter magnitude"
+- **magnitude_Q**: magnitude quality. For INGV origin version 0, 1, 2 (Earthworm automatic versions) 1 character (A,B,C,D) based on number of available values;  for INGV origin versions 100, 1000: 2 characters (A,B,C,D) based on number of available values and weighted standard deviation.
+- **magnitude_err**: uncertainty of the "hypocenter magnitude"
+- **magnitude_nsta_used**: number of stations contributing to the "hypocenter magnitude"
+- **pref_magnitud_id**: agency unique identifier of the "event magnitude" which is the preferred type and value of magnitude for the event, not necessarily associated to the specific hypocenter (eg: if a Mw is available it is preferred to the hypocenter related ML)
+- **pref_magnitude_type**: type of the preferred magnitude
+- **pref_magnitude_value**: value of the preferred magnitude
+- **pref_magnitude_Q**: magnitude quality. For INGV origin version 0, 1, 2 (Earthworm automatic versions) 1 character (A,B,C,D) based on number of available values;  for INGV origin versions 100, 1000: 2 characters (A,B,C,D) based on number of available values and weighted standard deviation
+- **pref_magnitude_err**: uncertainty associated to the preferred magnitude (not always present)
+- **pref_magnitude_nsta_used**: number of stations contributing to the preferred magnitude (non always present)
+- **source**: the source of the QuakeML information (it is either a file name or a web service query depending on the used option, see below)
+
 Note: the "hypocenter magnitude" is the magnitude directly associated to the specific hypocenter; it is calculated consequently to the hypocenter, it is typically an ML and it might be not selected as the "preferred" if a hierarchically more reliable one is present (eg: Mw)
 
 The `qml2extendedtext.py` code is included into the present docker.
