@@ -14,7 +14,7 @@ The `qml2extendedtext.py` code is included into the present docker.
 
 The docker is used to parse a full QuakeML (xml) file or QuakeML webservice response containing information on hypocenter and related arrival times picks, and write the following information about the hypocenter on one single line:
 
-- **event_id**: agency event unique identifier
+- *event_id*: agency event unique identifier
 - **event_type**: type of event (eg: earthquake, quarry blast and other agency dependent definitions)
 - **origin_id**: agency hypocenter unique identifier; this correspond to the asked version of hypocenter that can be "preferred" or specific a-priori known location versions (see the tag below)
 - **version**: this is a specific tag describing the type of solution (eg for INGV: 0,1,2 are automatic solutions (1 is not always present), 100,200,1000 are revised solutions and 1000 is the Bulletin one)
